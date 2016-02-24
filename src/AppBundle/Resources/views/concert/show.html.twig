@@ -1,0 +1,65 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - {% if 'concert_new' == app.request.get('_route') %}New{% else %}Update{% endif %} concert
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/app/images/slider/bg4.jpg') }}" alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock top %}
+
+{% block content %}
+<section id="explore">
+    <div class="row">
+        <div class="center-block col-md-11" style="float: none; ">
+    <h1>Concert</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ concert.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ concert.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ concert.description }}</td>
+            </tr>
+            <tr>
+                <th>Enventdate</th>
+                <td>{% if concert.enventDate %}{{ concert.enventDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Placenumber</th>
+                <td>{{ concert.placeNumber }}</td>
+            </tr>
+            <tr>
+                <th>Artist</th>
+                <td>{{ concert.artist }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+            <a class="btn btn-info"  href="{{ path('concert_index') }}">Back to the list</a>
+
+
+            <a class="btn btn-info"  href="{{ path('concert_edit', { 'id': concert.id }) }}">Edit</a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

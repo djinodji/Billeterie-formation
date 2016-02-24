@@ -1,0 +1,66 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - {% if 'concert_new' == app.request.get('_route') %}New{% else %}Update{% endif %} concert
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/app/images/slider/bg4.jpg') }}" alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock top %}
+
+
+{% block content %}
+
+        <section id="explore">
+            <div class="row">
+                <div class="center-block col-md-11" style="float: none;" >
+    <h1>Concert list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Enventdate</th>
+                <th>Placenumber</th>
+                <th>Artist</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concert in concerts %}
+            <tr>
+                <td><a href="{{ path('concert_show', { 'id': concert.id }) }}">{{ concert.id }}</a></td>
+                <td>{{ concert.name }}</td>
+                <td>{{ concert.description }}</td>
+                <td>{% if concert.enventDate %}{{ concert.enventDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ concert.placeNumber }}</td>
+                <td>{{ concert.artist }}</td>
+                <td>
+                            <a class="btn btn-info" href="{{ path('concert_show',  { 'id': concert.id }) }}">show</a>
+
+                            <a  class="btn btn-info"  href="{{ path('concert_edit', { 'id': concert.id }) }}">edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+            <a class="btn btn-primary pull-right" href="{{ path('concert_new') }}">Create a new concert</a>
+
+    </div>
+</div>
+            </section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - {% if 'concert_new' == app.request.get('_route') %}New{% else %}Update{% endif %} concert
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/app/images/slider/bg4.jpg') }}" alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock top %}
+
+{% block content %}
+<section id="explore">
+<div class="row">
+    <div class="center-block col-md-11" style="float: none; ">
+    <h1>Concert creation</h1>
+
+    {{ form_start(concertForm) }}
+        {{ form_widget(concertForm) }}
+        <input type="submit" class="btn btn-primary pull-right" value="Create" />
+    {{ form_end(concertForm) }}
+
+
+            <a  class="btn btn-primary" href="{{ path('concert_index') }}">Back to the concert list</a>
+
+    </div>
+</div>
+</section>
+{% endblock %}
