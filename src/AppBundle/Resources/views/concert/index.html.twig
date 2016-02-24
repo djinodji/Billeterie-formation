@@ -47,10 +47,18 @@
                 <td>{{ concert.placeNumber }}</td>
                 <td>{{ concert.artist }}</td>
                 <td>
+                    <span style="display: inline">
                             <a class="btn btn-info" href="{{ path('concert_show',  { 'id': concert.id }) }}">show</a>
 
                             <a  class="btn btn-info"  href="{{ path('concert_edit', { 'id': concert.id }) }}">edit</a>
 
+                    <form style="display: inline; margin: 0; padding: 0;" action="{{ path('concert_delete', {'id': concert.id })}}" method="POST" >
+                        <input type="hidden" id="form_id" name="concert_id" class="form-control" value="{{ concert.id }}" />
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_concert') }}" />
+
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+</span>
                 </td>
             </tr>
         {% endfor %}

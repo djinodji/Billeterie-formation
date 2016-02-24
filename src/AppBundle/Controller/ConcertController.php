@@ -103,7 +103,8 @@ class ConcertController extends Controller
      * Deletes a Concert entity.
      *
      * @Route("/{id}", name="concert_delete")
-     * @Method("DELETE")
+     *
+     * @Method("POST")
      */
     public function deleteAction(Request $request, Concert $concert)
     {
@@ -115,7 +116,9 @@ class ConcertController extends Controller
             $em->remove($concert);
             $em->flush();
         }
-
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($concert);
+        $em->flush();
         return $this->redirectToRoute('concert_index');
     }
 
