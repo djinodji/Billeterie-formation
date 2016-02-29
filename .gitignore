@@ -1,4 +1,6 @@
 /app/config/parameters.yml
+/app/bootstrap.php.cache
+/.idea/
 /bin/
 !/bin/console
 /build/
