@@ -51,7 +51,7 @@
                         <td>
                             <a href="{{ path('article_update', { 'slug': article.slug }) }}" class="btn btn-info" role="button">Modify</a>
 
-                            <form action="{{ path('article_delete') }}" method="POST">
+                            <form style="display: inline; margin: 0; padding: 0;" action="{{ path('article_delete') }}" method="POST">
                                 <input type="hidden" id="form_id" name="article_id" class="form-control" value="{{ article.id }}" />
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_article') }}" />
 

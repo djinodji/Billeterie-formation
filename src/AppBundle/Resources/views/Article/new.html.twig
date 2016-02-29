@@ -17,8 +17,7 @@
 {% endblock top %}
 
 {% block content %}
-<div class="row">
-    <div class="center-block col-md-11" style="float: none; background-color: #C34C39">
+    <div class="center-block col-md-12" style="float: none; background-color: #C34C39">
     <section id="explore">
         {% for message in app.session.flashbag.get('success') %}
             {{ message }}
@@ -35,5 +34,4 @@
         {{ form_end(articleForm) }}
     </section>
     </div>
-</div>
 {% endblock %}
